@@ -1,3 +1,7 @@
+#######################################################################
+## Import Libraries
+#######################################################################
+
 import ee
 import pandas as pd
 import geopandas as gpd
@@ -12,8 +16,8 @@ aoi_geom = aoi_gdf.geometry.iloc[0]  # Assuming your GeoJSON has only one featur
 aoi = ee.Geometry.Polygon(aoi_geom.__geo_interface__['coordinates']);
 
 # Collection definition
-start_date = '2023-01-01'
-end_date = '2023-06-30'
+start_date = '2023-01-01';
+end_date = '2023-06-30';
 collection = ee.ImageCollection('COPERNICUS/S1_GRD') \
     .filterBounds(aoi) \
     .filterDate(ee.Date(start_date), ee.Date(end_date)) \
@@ -79,5 +83,5 @@ for unique_date in unique_dates:
 
 print(df.head())
 
-# If you want to save the dataframe to a CSV file later
+# Save the dataframe to a CSV file later
 df.to_csv('sentinel_data.csv', index=False)
