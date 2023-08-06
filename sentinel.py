@@ -7,7 +7,7 @@ import numpy as np
 ee.Initialize()
 
 # Load your AOI from the GeoJSON file
-aoi_gdf = gpd.read_file('/home/sathyan/Gundlupet/watershed_data.json')
+aoi_gdf = gpd.read_file('/home/sathyan/Gundlupet/boundary.json')
 aoi_geom = aoi_gdf.geometry.iloc[0]  # Assuming your GeoJSON has only one feature/geometry
 aoi = ee.Geometry.Polygon(aoi_geom.__geo_interface__['coordinates']);
 
