@@ -8,10 +8,11 @@ import geopandas as gpd
 import numpy as np
 
 # Initialize the Earth Engine library.
+#ee.Authenticate()
 ee.Initialize()
 
 # Load your AOI from the GeoJSON file
-aoi_gdf = gpd.read_file('/home/sathyan/Gundlupet/boundary.json')
+aoi_gdf = gpd.read_file('/home/srao/Documents/GitHub/sentinel/boundary.json')
 aoi_geom = aoi_gdf.geometry.iloc[0]  # Assuming your GeoJSON has only one feature/geometry
 aoi = ee.Geometry.Polygon(aoi_geom.__geo_interface__['coordinates']);
 
